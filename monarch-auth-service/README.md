@@ -1,14 +1,14 @@
 <p align="right">
-  <a href="https://amplication.com" target="_blank">
-    <img alt="amplication-logo" height="70" alt="Amplication Logo" src="https://amplication.com/images/amplication-logo-purple.svg"/>
+  <a href="#" target="_blank">
+    MONARCH ETP
   </a>
 </p>
 
 # Introduction
 
-This service was generated with Amplication. The server-side of the generated project. This component provides the different backend services - i.e., REST API, GraphQL API, authentication, authorization, logging, data validation and the connection to the database. Additional information about the server component and the architecture around it, can be found on the [documentation](https://docs.amplication.com/guides/getting-started) site.
+This service is the authentication service for the MONARCH ETP, Ethiopian Trading platforms. Currently it has simple admin pannel fro the frontend but the backend server is capable of exposing both GraphQL and REST apis for JWT based auth. This service provides the different backend services related the authentication - i.e., REST APIs, GraphQL APIs, authentication, authorization, logging, data validation and the connection to the database. Additional information about the server component and the architecture around it, can be found on the [design files](https://docs.amplication.com/guides/getting-started) .
 
-# Getting started
+# Getting started with the backend
 
 ## Step 1: Configuration
 
@@ -27,8 +27,7 @@ Configuration for the server component can be provided through the use of enviro
 | JWT_SECRET_KEY       | the secret used to sign the json-web token   | [secret]                                                            |
 | JWT_EXPIRATION       | the expiration time for the json-web token   | 2d                                                                  |
 
-> **Note**
-> Amplication generates default values and stores them under the .env file. It is advised to use some form of secrets manager/vault solution when using in production. 
+
 
 ## Step 2.1: Scripts - pre-requisites
 
@@ -54,11 +53,44 @@ $ npm run db:init
 # start the server component
 $ npm run start
 ```
-By default, your app comes with one user with the username "admin" and password "admin".
+the default user and password are "admin" and "admin".
 
 ## Step 2.2: Scripts - container based development
 
 ```shell
 # start the server component as a docker container
 $ npm run compose:up
+```
+
+# Getting started with the frontend
+
+# Getting started
+
+## Step 1: Configuration
+
+Configuration for the client component can be provided through the use of environment variables. These can be passed to the application via the use of the `.env` file in the base directory of the client service. Below a table can be found which show the different variables that can be passed. These values are provided default values after generation, change them to the desired values.
+
+| Variable             | Description                                      | Value                           |
+| -------------------- | ------------------------------------------------ |  ------------------------------ |
+| PORT                 | the port on which to run the client              | 3001                            |
+| REACT_APP_SERVER_URL | the url on which the server component is running | http://localhost:[server-port]  |
+
+
+
+## Step 2: Scripts
+
+After configuration of the client the next step would be to run the application. Before running the client side of the component, make sure that the different pre-requisites are met - i.e., npm, docker. Make sure that the server-side of the application is running.
+
+```sh
+# installation of the dependencies
+$ npm install
+
+# starts the application in development mode - available by default under http://localhost:3001 with a pre-configured user with the username "admin" and password "admin"
+$ npm run start
+
+# builds the application in production mode - available under 'build'
+$ npm run build
+
+# removes the single build dependency from the project
+$ npm run eject
 ```
